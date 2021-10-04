@@ -1,4 +1,5 @@
 package lab.eugene.wealthtechstaffrepopostgress.entity;
+
 import javax.persistence.*;
 
 @Entity
@@ -56,5 +57,6 @@ public class WealthTechStaff {
     public void setLenghtOfServiceYears(Integer lenghtOfServiceYears) {
         this.lenghtOfServiceYears = lenghtOfServiceYears;
     }
+
 
 }

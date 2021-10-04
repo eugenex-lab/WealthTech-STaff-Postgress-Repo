@@ -3,10 +3,13 @@ package lab.eugene.wealthtechstaffrepopostgress.WealthTechController;
 import lab.eugene.wealthtechstaffrepopostgress.entity.WealthTechStaff;
 import lab.eugene.wealthtechstaffrepopostgress.repository.WealthTechStaffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,7 @@ public class WealthTechController {
     private WealthTechStaffRepository wealthTechStaffRepository;
 
     // GET WEALTH TECH STAFF
+
     @GetMapping("home")
     public List<WealthTechStaff> getallStaff() {
         return this.wealthTechStaffRepository.findAll();
@@ -30,6 +34,7 @@ public class WealthTechController {
     //Save Sankore Product
     @PostMapping("home")
     public WealthTechStaff createStaff(@RequestBody WealthTechStaff wealthTechStaff) {
+        checkIfValueExists(wealthTechStaff.getStaffName());
         return this.wealthTechStaffRepository.save(wealthTechStaff);
     }
 
@@ -67,7 +72,16 @@ public class WealthTechController {
         return response;
     }
 
+    public void checkIfValueExists(String value) {
+        List<String> values = Arrays.asList("Eugene", "Olamide");
 
+//        boolean isMatch = values.stream().anyMatch(val -> val.equals(value));
+        boolean isMatch = false;
+        for (String val : values) if (val.equals(value)) isMatch = true;
+
+        if (!isMatch) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "");
+
+    }
 
 
 }
