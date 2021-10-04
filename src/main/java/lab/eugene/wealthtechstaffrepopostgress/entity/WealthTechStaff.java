@@ -1,5 +1,4 @@
 package lab.eugene.wealthtechstaffrepopostgress.entity;
-
 import javax.persistence.*;
 
 @Entity
