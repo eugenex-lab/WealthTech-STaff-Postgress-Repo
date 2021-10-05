@@ -73,7 +73,7 @@ public class WealthTechController {
     }
 
     public void checkIfValueExists(String value) {
-        List<String> values = Arrays.asList("Eugene", "Olamide");
+        List<String> values = Arrays.asList("Gbemileke", "Eugene", "Ifeoluwa", "Henry", "Tommy");
 
 //        boolean isMatch = values.stream().anyMatch(val -> val.equals(value));
         boolean isMatch = false;
